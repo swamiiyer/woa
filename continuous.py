@@ -191,10 +191,13 @@ class Dynamics:
         payoffs pi and pj.
         """
         
-        if pi >= pj:
+        if pi > pj:
             return 0.0
-        return self.params["selection_strength"] * \
-            (pj - pi) / (self.max_payoff - self.min_payoff)
+        elif pi < pj:
+            return self.params["selection_strength"] * \
+                (pj - pi) / (self.max_payoff - self.min_payoff)
+        else:
+            return 0.5
 
     def fermi(self, pi, pj):
         """ 
@@ -700,7 +703,6 @@ class Structured_Replication2(Dynamics):
 
         # Update.
         p = self.replicate(pi, pj)
-        trait = i.get_trait()
         if random.random() < p: 
             trait = j.get_trait()
             if random.random() < self.params["mutation"]: 
