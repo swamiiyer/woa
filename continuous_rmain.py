@@ -134,7 +134,7 @@ def plot_trait_histogram(params, traits):
     pylab.subplot(122).clear()
     pylab.xlabel(r"$x$")
     pylab.ylabel(r"$I$")
-    pylab.hist(traits, 100, range = (0, params["max_trait"]), normed = True, 
+    pylab.hist(traits, 100, range = (0, params["max_trait"]), 
                facecolor = "black")
     pylab.xlim(0, params["max_trait"])
     pylab.ylim(0, params["population"])
